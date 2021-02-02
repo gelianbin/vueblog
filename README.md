@@ -14,4 +14,4 @@ vue入门视频：https://www.bilibili.com/video/BV125411W73W/
 **vueblog讲解视频：** https://www.bilibili.com/video/BV1PQ4y1P7hZ/
 
 
-这是别写的！！！！！
+这是别人写的！！！！！
