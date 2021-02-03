@@ -56,7 +56,7 @@ public class AccountController {
         );
     }
 
-    //退出接口
+    //退出接口··
     @RequiresAuthentication
     @GetMapping("/logout")
     public Result logout() {
