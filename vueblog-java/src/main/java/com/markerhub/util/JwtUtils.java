@@ -16,6 +16,14 @@ import java.util.Date;
 @Slf4j
 @Data
 @Component
+//配置文件application.yml的信息
+/*
+markerhub:
+  jwt:
+    secret: f4e2e52034348f86b67cde581c0f9eb5
+    expire: 604800
+    header: Authorization
+ */
 @ConfigurationProperties(prefix = "markerhub.jwt")
 public class JwtUtils {
 

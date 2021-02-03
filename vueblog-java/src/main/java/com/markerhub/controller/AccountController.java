@@ -35,11 +35,14 @@ public class AccountController {
         User user = userService.getOne(new QueryWrapper<User>().eq("username", loginDto.getUsername()));
         Assert.notNull(user, "用户不存在");
 
+        //密码校验SecureUtil.md5()
         if(!user.getPassword().equals(SecureUtil.md5(loginDto.getPassword()))){
             return Result.fail("密码不正确");
         }
+        //密码正确，生成jwt
         String jwt = jwtUtils.generateToken(user.getId());
 
+        //把jwt返回过去
         response.setHeader("Authorization", jwt);
         response.setHeader("Access-control-Expose-Headers", "Authorization");
 

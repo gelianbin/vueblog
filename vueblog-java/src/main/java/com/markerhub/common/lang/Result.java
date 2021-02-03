@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class Result implements Serializable {
 
     private int code; // 200是正常，非200表示异常
-    private String msg;
-    private Object data;
+    private String msg;//结果消息
+    private Object data;//结果数据
 
     public static Result succ(Object data) {
         return succ(200, "操作成功", data);

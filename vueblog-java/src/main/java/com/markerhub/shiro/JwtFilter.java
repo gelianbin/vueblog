@@ -29,6 +29,7 @@ public class JwtFilter extends AuthenticatingFilter {
     @Override
     protected AuthenticationToken createToken(ServletRequest servletRequest, ServletResponse servletResponse) throws Exception {
 
+        //强转
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         String jwt = request.getHeader("Authorization");
         if(StringUtils.isEmpty(jwt)) {
@@ -49,6 +50,7 @@ public class JwtFilter extends AuthenticatingFilter {
 
             // 校验jwt
             Claims claim = jwtUtils.getClaimByToken(jwt);
+            //为空 || 过期时间
             if(claim == null || jwtUtils.isTokenExpired(claim.getExpiration())) {
                 throw new ExpiredCredentialsException("token已失效，请重新登录");
             }
@@ -61,6 +63,7 @@ public class JwtFilter extends AuthenticatingFilter {
     @Override
     protected boolean onLoginFailure(AuthenticationToken token, AuthenticationException e, ServletRequest request, ServletResponse response) {
 
+        //HttpServletResponse extends ServletResponse
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
         Throwable throwable = e.getCause() == null ? e : e.getCause();
@@ -91,4 +94,6 @@ public class JwtFilter extends AuthenticatingFilter {
 
         return super.preHandle(request, response);
     }
+
+
 }

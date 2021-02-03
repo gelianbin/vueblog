@@ -24,6 +24,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //@RequiresAuthentication 必须认证了才能访问的接口
     @RequiresAuthentication
     @GetMapping("/index")
     public Result index() {
@@ -32,6 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/save")
+    //@Validated  校验实体类的校验规则
     public Result save(@Validated @RequestBody User user) {
         return Result.succ(user);
     }
